@@ -52,7 +52,7 @@ Laberinto *parserEntrada(char *fileName)
     if (buff[0] == '(')
     {
       // ...de las paredes definidas
-      if (seccion == 3)
+      if (seccion == 3 && !(buff[0] == 'o' || buff[0] == 'p' || buff[0] == 'd'))
       {
         datos->listaPosParedesDefinidas = (int **)realloc(datos->listaPosParedesDefinidas, sizeof(int *) * (numeroPared + 1));
         datos->listaPosParedesDefinidas[numeroPared] = (int *)malloc(sizeof(int) * 2);
