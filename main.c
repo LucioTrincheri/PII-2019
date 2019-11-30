@@ -39,13 +39,13 @@ Laberinto *parserEntrada(char *fileName)
     // Longitud del laberinto
     if (seccion == 1)
     {
-      datos->dimen = buff[0] - '0';
+      sscanf(buff, "%d", &(datos->dimen));
       seccion++;
     }
     // Cantidad de paredes random
     if (seccion == 4)
     {
-      datos->nParRan = buff[0] - '0';
+      sscanf(buff, "%d", &(datos->nParRan));
       seccion++;
     }
     // Coordenadas...
@@ -56,8 +56,9 @@ Laberinto *parserEntrada(char *fileName)
       {
         datos->listaPosParedesDefinidas = (int **)realloc(datos->listaPosParedesDefinidas, sizeof(int *) * (numeroPared + 1));
         datos->listaPosParedesDefinidas[numeroPared] = (int *)malloc(sizeof(int) * 2);
-        datos->listaPosParedesDefinidas[numeroPared][0] = (buff[1] - '0') - 1;
-        datos->listaPosParedesDefinidas[numeroPared][1] = (buff[3] - '0') - 1;
+        sscanf(buff, "(%[^)\n]", buff);
+        datos->listaPosParedesDefinidas[numeroPared][0] = (*(strtok(buff, ",")) - '1');
+        datos->listaPosParedesDefinidas[numeroPared][1] = (*(strtok(NULL, ",")) - '1');
         numeroPared++;
       }
       else
@@ -65,14 +66,17 @@ Laberinto *parserEntrada(char *fileName)
         // ...de la posicion de inicio
         if (seccion == 6)
         {
-          datos->posInicio[0] = (buff[1] - '0') - 1;
-          datos->posInicio[1] = (buff[3] - '0') - 1;
+          // TODO IMPORTANTE cambiar los buff por su strtok correspondiente
+          sscanf(buff, "(%[^)\n]", buff);
+          datos->posInicio[0] = (*(strtok(buff, ",")) - '1');
+          datos->posInicio[1] = (*(strtok(NULL, ",")) - '1');
         }
         // ...de la posicion objetivo
         else
         {
-          datos->posFin[0] = (buff[1] - '0') - 1;
-          datos->posFin[1] = (buff[3] - '0') - 1;
+          sscanf(buff, "(%[^)\n]", buff);
+          datos->posFin[0] = (*(strtok(buff, ",")) - '1');
+          datos->posFin[1] = (*(strtok(NULL, ",")) - '1');
         }
       }
     }
