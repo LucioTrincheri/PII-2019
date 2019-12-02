@@ -1,5 +1,4 @@
 import subprocess
-import os
 # Constante de direcciones
 DIRECCIONES = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
@@ -159,7 +158,7 @@ def main():
     # laberinto y se volvera a intentar calcular un camino.
     while not resultado:
         # Si al invocar gcc se le da otro nombre al ejecutable y se borra la
-        # linea 152, sera necesario cambiar a.out por el nombre del ejecutable
+        # linea 151, sera necesario cambiar a.out por el nombre del ejecutable
         subprocess.run(["./a.out", entrada])
         laberinto, inicio, fin = parserArchivo("laberinto.txt")
         resultado = aStar(inicio, fin, laberinto)
