@@ -180,7 +180,7 @@ void escrituraSalida(Laberinto *datos)
   }
 
   // Escritura de archivo
-  FILE *fp = fopen("salida.txt", "w");
+  FILE *fp = fopen("laberinto.txt", "w");
   for (int i = 0; i < datos->dimen; i++)
   {
     for (int j = 0; j < datos->dimen; j++)
