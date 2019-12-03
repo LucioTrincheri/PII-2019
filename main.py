@@ -1,4 +1,5 @@
 import subprocess
+import random
 # Constante de direcciones
 DIRECCIONES = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
@@ -43,6 +44,9 @@ def parserArchivo(pathF):
 # ubicado hasta la posicion final, lo cual permitira tener una
 # direccion general de hacia donde moverse, segun la distancia
 def heuristica(act, fin):
+    # Si su usara pitagoras para hacer la heuristica, el camino sera
+    # mas directo hacia la salida, pero en laberintos grandes,
+    # las operaciones matematicas se hacen demasiado costosa
     return (abs(fin[0] - act[0]) + abs(fin[1] - act[1]))
 
 # Funcion que retorna si un punto dado esta fuera del rango del array
@@ -92,7 +96,8 @@ def aStar(ini, fin, lab):
         actualF = None
         # Busco el punto con menor valor de dist al origen + heuristica
         for posible in frontera:
-            if actual is None or F[posible] < actualF:
+            # Mucho mejor seria usar una priority queue
+            if actual is None or F[posible] <= actualF:
                 actual = posible
                 actualF = F[posible]
         # Si este punto es el destino, creo el array de retorno al origen
@@ -111,6 +116,10 @@ def aStar(ini, fin, lab):
         lab[actual[0]][actual[1]] = 2
         # Obtengo los vecinos posibles al nodo
         vecinos = obtenerVecinos(actual, lab, size)
+        # Necesario , ya que los vecinos siempre se obtienen
+        # en el mismo orden, Este -> Oeste -> Norte -> Sur
+        # y al hacer el append, siempre se prioritiza el sur,
+        random.shuffle(vecinos)
         # Por cada vecino...
         for vecino in vecinos:
             # Me fijo si ya lo tome en cuenta, en cuyo caso lo ignoro
