@@ -2,8 +2,8 @@ dimension
 1000
 obstaculos fijos
 obstaculos aleatorios
-0
+100000
 posicion inicial
-(3,3)
+(10,10)
 objetivo
-(997,997)
+(950,950)
