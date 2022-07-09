@@ -1,0 +1,6 @@
+a, b, locA, 13, F, M
+c, d, locB, 13, M, F
+e, f, locA, 20, M, F
+g, h, locA, 15, F, M
+i, j, locA, 17, M, F
+k, l, locA, 80, F, A

@@ -1,0 +1,2 @@
+[("RAFAEL", "AGUERO", "CENTRAL", 72, "M", "F"), ("CARMEN", "CORRALES", "GOICOECHEA",  32, "F", "M"), ("JOSE", "DELGADO", "SANTA", 52, "M", "A")]
+{"edad": [("MARTA", "VILLALTA", "GOICOECHEA", 5, "F", "F")], "gustos": [("MANUEL", "DELGADO", "PURISCAL", 66, "M", "N")], "noObtuvo": []}
